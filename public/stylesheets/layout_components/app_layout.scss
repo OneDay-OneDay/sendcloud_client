@@ -3,55 +3,127 @@
 	padding: 0;
 }
 html,body{
-	.container{
-		width: 100%;
-		margin: 0 auto;
-		overflow: hidden;
-		// 导航区域
-		.nav{
-			float: left;
-			width: 20%;
-			min-width: 200px;
-			height: 480px;
-			background-color: #FFF;
-			box-sizing: border-box;
-			-moz-box-sizing: border-box;
-			-webkit-box-sizing: border-box;
-			border: 1px solid #ededed;
-			border-right: none;
-			.nav li{
-				list-style-type: none;
-				.nav li a{
-					display: inline-block;
-					width: 100%;
-					height: 40px;
-					text-decoration: none;
-					text-align: center;
-					line-height: 40px;
-					color: #707171;
-					font-size: 15px;
-				}
-				.nav li a:hover{
-					color: #FFF !important;
-					background-color: #ee1e6c;
-				}
-				.nav li .active{
-					color: #FFF !important;
-					background-color: #ee1e6c;
-				}
+	width: 100%;
+	// 登录框
+	.ant-modal-wrap {
+		.input_wrap{
+			width: 400px;
+			margin: 10px auto;
+			overflow: hidden;
+			line-height: 30px;
+			.ant-input{
+				width: 300px;
+				float: right;
 			}
 		}
-		// 内容区域
-		.content_main{
-			position:relative;
-			float: right;
-			width: 80%;
-			min-width: 600px;
-			background-color: #FFF;
-			box-sizing: border-box;
-			-moz-box-sizing: border-box;
-			-webkit-box-sizing: border-box;
-			border: 1px solid #ededed;
+	}
+	#app{
+		width: 100%;
+		.container{
+			width: 100%;
+			// 导航区域
+			.nav{
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 256px;
+				height: 100%;
+				background-color: #333333;
+				box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				-webkit-box-sizing: border-box;
+				.logo_area{
+					width: 100%;
+					height: 80px;
+					text-align: center;
+					line-height: 80px;
+					font-size: 20px;
+					color: #FFF;
+				}
+				li{
+					list-style-type: none;
+					a{
+						display: inline-block;
+						width: 100%;
+						height: 45px;
+						text-decoration: none;
+						padding-left: 20%;
+						line-height: 45px;
+						color: #707171;
+						font-size: 14px;
+						box-sizing: border-box;
+						-moz-box-sizing: border-box;
+						-webkit-box-sizing: border-box;
+					}
+					a:hover{
+						color: #FFF !important;
+					}
+					.active{
+						color: #FFF !important;
+						background-color: #2db7f5;
+					}
+				}
+			}
+			// 内容横幅区域
+			.content_banner{
+				width: 100%;
+				height: 80px;
+				// 清除浮动
+				overflow: hidden;
+				box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				-webkit-box-sizing: border-box;
+				border-bottom: 1px solid #ededed;
+				.user{
+					width: 25%;
+					height: 100%;
+					float: right;
+					border-left: 1px solid #ededed;
+					.user_box{
+						width: 100%;
+						height: 100%;
+						font-size: 14px;
+						// 清除浮动
+						overflow: hidden;
+						.user_name{
+							width : 70%;
+							height: 100%;
+							float: left;
+							line-height: 80px;
+							text-align: center;
+						}
+						.user_state{
+							width : 30%;
+							height: 100%;
+							float: right;
+							line-height: 80px;
+							cursor: pointer;
+						}
+					}
+				}
+			}
+			// 内容区域
+			.content_main{
+				width: 100%;
+				padding-left: 256px;
+				background-color: #FFF;
+				box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				-webkit-box-sizing: border-box;
+				border: 1px solid #ededed;
+				border-top: none;
+				border-left: none;
+				.content_main_box{
+					width: 90%;
+					min-height: 650px;
+					margin: 0 auto;
+					box-sizing: border-box;
+					-moz-box-sizing: border-box;
+					-webkit-box-sizing: border-box;
+					border: 1px solid #ededed;
+					border-top: none; 
+				}
+			}
 		}
 	}
 }

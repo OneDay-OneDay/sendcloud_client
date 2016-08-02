@@ -1,9 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Router,Route,browserHistory,IndexRoute } from "react-router";
+import { Router,Route,Redirect,browserHistory,IndexRoute } from "react-router";
 
 import App from "../app.jsx";
-import Setting from "../components/common_components/setting.jsx";
 
 ReactDOM.render(
 	(
@@ -11,23 +10,20 @@ ReactDOM.render(
 			<Route path="/send_email" component={ App }>
 				<IndexRoute getComponent={ (nextState, callback) =>{ 
 					require.ensure( [ ], (require) => { 
-						callback(null, require("../components/common_components/setting.jsx").default) 
+						callback(null, require("../components/page_components/sending.jsx").default) 
 					}) } } />
-				<Route path="/send_email/setting" getComponent={ (nextState, callback) =>{ 
-					require.ensure( [ ], (require) => { 
-						callback(null, require("../components/common_components/setting.jsx").default) 
-					}) } } />
-				<Route path="/send_email/sending" getComponent={ (nextState, callback) =>{ 
-					require.ensure( [ ], (require) => { 
-						callback(null, require("../components/common_components/sending.jsx").default) 
-					}) } } />
+				<Redirect from="/send_email/sending" to="/send_email" />
 				<Route path="/send_email/template" getComponent={ (nextState, callback) =>{ 
 					require.ensure( [ ], (require) => { 
-						callback(null, require("../components/common_components/template.jsx").default) 
+						callback(null, require("../components/page_components/template.jsx").default) 
 					}) } } />
 				<Route path="/send_email/address" getComponent={ (nextState, callback) =>{ 
 					require.ensure( [ ], (require) => { 
-						callback(null, require("../components/common_components/address.jsx").default) 
+						callback(null, require("../components/page_components/address.jsx").default) 
+					}) } } />
+				<Route path="/send_email/setting" getComponent={ (nextState, callback) =>{ 
+					require.ensure( [ ], (require) => { 
+						callback(null, require("../components/page_components/setting.jsx").default) 
 					}) } } />
 			</Route>
 		</Router>
