@@ -1,6 +1,6 @@
-webpackJsonp([1,6],{
+webpackJsonp([15,6],{
 
-/***/ 310:
+/***/ 314:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -15,6 +15,8 @@ webpackJsonp([1,6],{
 
 	var _react2 = _interopRequireDefault(_react);
 
+	__webpack_require__(317);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -23,36 +25,77 @@ webpackJsonp([1,6],{
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Sending = function (_React$Component) {
-		_inherits(Sending, _React$Component);
+	var Notlogin = function (_React$Component) {
+		_inherits(Notlogin, _React$Component);
 
-		function Sending(props) {
-			_classCallCheck(this, Sending);
+		function Notlogin(props) {
+			_classCallCheck(this, Notlogin);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Sending).call(this, props));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Notlogin).call(this, props));
 
 			window.scrollTo(0, 0);
-			_this.state = {};
 			return _this;
 		}
 
-		_createClass(Sending, [{
+		_createClass(Notlogin, [{
 			key: "render",
 			value: function render() {
 				return _react2.default.createElement(
 					"div",
-					null,
-					"账户设置页面"
+					{ className: "notlogin" },
+					"你还未登录，登录后才可以使用左侧功能"
 				);
 			}
 		}]);
 
-		return Sending;
+		return Notlogin;
 	}(_react2.default.Component);
 
 	;
 
-	exports.default = Sending;
+	exports.default = Notlogin;
+
+/***/ },
+
+/***/ 317:
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(318);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(245)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./notlogin.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./notlogin.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+
+/***/ 318:
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(244)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".notlogin {\n  font-size: 12px;\n  text-align: center;\n  line-height: 100px; }\n", ""]);
+
+	// exports
+
 
 /***/ }
 

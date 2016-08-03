@@ -1,4 +1,4 @@
-webpackJsonp([1,6],{
+webpackJsonp([19,6],{
 
 /***/ 310:
 /***/ function(module, exports, __webpack_require__) {
@@ -42,7 +42,7 @@ webpackJsonp([1,6],{
 				return _react2.default.createElement(
 					"div",
 					null,
-					"账户设置页面"
+					"邮件发送页面"
 				);
 			}
 		}]);

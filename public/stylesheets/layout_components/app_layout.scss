@@ -16,6 +16,15 @@ html,body{
 				float: right;
 			}
 		}
+		.error_message{
+			width: 400px;
+			margin: 15px auto;
+			overflow: hidden;
+			.ant-alert-error{
+				width: 300px;
+				float: right;
+			}
+		}
 	}
 	#app{
 		width: 100%;

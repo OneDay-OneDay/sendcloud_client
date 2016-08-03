@@ -1,6 +1,6 @@
-webpackJsonp([1,6],{
+webpackJsonp([21,6],{
 
-/***/ 310:
+/***/ 312:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -23,36 +23,36 @@ webpackJsonp([1,6],{
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Sending = function (_React$Component) {
-		_inherits(Sending, _React$Component);
+	var Address = function (_React$Component) {
+		_inherits(Address, _React$Component);
 
-		function Sending(props) {
-			_classCallCheck(this, Sending);
+		function Address(props) {
+			_classCallCheck(this, Address);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Sending).call(this, props));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Address).call(this, props));
 
 			window.scrollTo(0, 0);
 			_this.state = {};
 			return _this;
 		}
 
-		_createClass(Sending, [{
+		_createClass(Address, [{
 			key: "render",
 			value: function render() {
 				return _react2.default.createElement(
 					"div",
 					null,
-					"账户设置页面"
+					"地址列表页面"
 				);
 			}
 		}]);
 
-		return Sending;
+		return Address;
 	}(_react2.default.Component);
 
 	;
 
-	exports.default = Sending;
+	exports.default = Address;
 
 /***/ }
 

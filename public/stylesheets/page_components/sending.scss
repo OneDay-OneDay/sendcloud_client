@@ -1,0 +1,29 @@
+.SE_sending_wrap{
+	padding-top: 50px;
+	.SE_sending{
+		width: 80%;
+		margin: 0 auto;
+		.TabPane_item{
+			width: 400px;
+			margin-top: 10px;
+			margin-left: 20px;
+			overflow: hidden;
+			line-height: 30px;
+			.ant-select{
+				width: 300px;
+				float: right;
+			}
+			.ant-input{
+				width: 300px;
+				float: right;
+			}
+		}
+	}
+}
+.ant-select-dropdown-menu-item{
+	span{
+		display: inline-block;
+		width: 100%;
+		height: 100%;
+	}
+}
