@@ -1,6 +1,6 @@
-webpackJsonp([4,8],{
+webpackJsonp([6,8],{
 
-/***/ 387:
+/***/ 391:
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -23,36 +23,32 @@ webpackJsonp([4,8],{
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Setting = function (_React$Component) {
-		_inherits(Setting, _React$Component);
+	var NotFound = function (_React$Component) {
+		_inherits(NotFound, _React$Component);
 
-		function Setting(props) {
-			_classCallCheck(this, Setting);
+		function NotFound() {
+			_classCallCheck(this, NotFound);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Setting).call(this, props));
-
-			window.scrollTo(0, 0);
-			_this.state = {};
-			return _this;
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(NotFound).apply(this, arguments));
 		}
 
-		_createClass(Setting, [{
+		_createClass(NotFound, [{
 			key: "render",
 			value: function render() {
 				return _react2.default.createElement(
 					"div",
 					null,
-					"账户设置页面"
+					"怎么到这里来啦...那个...地址...输错了吧？"
 				);
 			}
 		}]);
 
-		return Setting;
+		return NotFound;
 	}(_react2.default.Component);
 
 	;
 
-	exports.default = Setting;
+	exports.default = NotFound;
 
 /***/ }
 

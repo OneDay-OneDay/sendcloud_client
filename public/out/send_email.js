@@ -1,4 +1,4 @@
-webpackJsonp([0,6],[
+webpackJsonp([0,8],[
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -18,7 +18,7 @@ webpackJsonp([0,6],[
 
 	var _app2 = _interopRequireDefault(_app);
 
-	var _auth = __webpack_require__(315);
+	var _auth = __webpack_require__(311);
 
 	var _auth2 = _interopRequireDefault(_auth);
 
@@ -31,35 +31,35 @@ webpackJsonp([0,6],[
 			_reactRouter.Route,
 			{ path: "/send_email", component: _app2.default },
 			_react2.default.createElement(_reactRouter.IndexRoute, { onEnter: _auth2.default.replace_away, getComponent: function getComponent(nextState, callback) {
-					__webpack_require__.e/* nsure */(12/* empty */, function (require) {
-						callback(null, __webpack_require__(310).default);
+					__webpack_require__.e/* nsure */(1, function (require) {
+						callback(null, __webpack_require__(312).default);
 					});
 				} }),
 			_react2.default.createElement(_reactRouter.Redirect, { from: "/send_email/sending", to: "/send_email" }),
 			_react2.default.createElement(_reactRouter.Route, { path: "/send_email/template", onEnter: _auth2.default.replace_away, getComponent: function getComponent(nextState, callback) {
-					__webpack_require__.e/* nsure */(25, function (require) {
-						callback(null, __webpack_require__(311).default);
+					__webpack_require__.e/* nsure */(2, function (require) {
+						callback(null, __webpack_require__(385).default);
 					});
 				} }),
 			_react2.default.createElement(_reactRouter.Route, { path: "/send_email/address", onEnter: _auth2.default.replace_away, getComponent: function getComponent(nextState, callback) {
-					__webpack_require__.e/* nsure */(13, function (require) {
-						callback(null, __webpack_require__(312).default);
+					__webpack_require__.e/* nsure */(3, function (require) {
+						callback(null, __webpack_require__(386).default);
 					});
 				} }),
 			_react2.default.createElement(_reactRouter.Route, { path: "/send_email/setting", onEnter: _auth2.default.replace_away, getComponent: function getComponent(nextState, callback) {
-					__webpack_require__.e/* nsure */(14, function (require) {
-						callback(null, __webpack_require__(313).default);
+					__webpack_require__.e/* nsure */(4, function (require) {
+						callback(null, __webpack_require__(387).default);
 					});
 				} }),
 			_react2.default.createElement(_reactRouter.Route, { path: "/send_email/notlogin", onEnter: _auth2.default.already_login, getComponent: function getComponent(nextState, callback) {
-					__webpack_require__.e/* nsure */(15, function (require) {
-						callback(null, __webpack_require__(314).default);
+					__webpack_require__.e/* nsure */(5, function (require) {
+						callback(null, __webpack_require__(388).default);
 					});
 				} })
 		),
 		_react2.default.createElement(_reactRouter.Route, { path: "*", getComponent: function getComponent(nextState, callback) {
-				__webpack_require__.e/* nsure */(18, function (require) {
-					callback(null, __webpack_require__(316).default);
+				__webpack_require__.e/* nsure */(6, function (require) {
+					callback(null, __webpack_require__(391).default);
 				});
 			} })
 	), document.getElementById("app"));
@@ -325,7 +325,7 @@ webpackJsonp([0,6],[
 
 	var _user2 = _interopRequireDefault(_user);
 
-	__webpack_require__(308);
+	__webpack_require__(309);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -521,9 +521,7 @@ webpackJsonp([0,6],[
 
 	var _reactRouter = __webpack_require__(175);
 
-	var _superagent = __webpack_require__(303);
-
-	var _superagent2 = _interopRequireDefault(_superagent);
+	var _fetch = __webpack_require__(303);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -574,10 +572,7 @@ webpackJsonp([0,6],[
 					_this.setState({ confirmLoading: false, error_message: "请填写完表单" });
 					return;
 				};
-				_superagent2.default.post("/api/login").set("Content-Type", "application/json").send({ API_USER: API_USER, API_KEY: API_KEY }).end(function (error, result) {
-					if (error) {
-						console.log(error);
-					};
+				(0, _fetch.fetch_data_post)("/api/login", { apiUser: API_USER, apiKey: API_KEY }).then(function (result) {
 					if (result.body.error) {
 						_this.setState({ confirmLoading: false, error_message: result.body.error });
 						return;
@@ -592,6 +587,8 @@ webpackJsonp([0,6],[
 						_message2.default.success("登录成功");
 					}, 500);
 					_reactRouter.browserHistory.push("/send_email/sending");
+				}).catch(function (error) {
+					console.log(error);
 				});
 			}
 		}, {
@@ -6113,6 +6110,31 @@ webpackJsonp([0,6],[
 /* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
+	"use strict";
+
+	var request = __webpack_require__(304);
+	module.exports = {
+		// 封装Promise形式的异步请求API
+		fetch_data_get: function fetch_data_get(url, query_params) {
+			return new Promise(function (resolve, reject) {
+				request.get(url).set("Accept", "application/json").query(query_params).end(function (error, result) {
+					error ? reject(error) : resolve(result);
+				});
+			});
+		},
+		fetch_data_post: function fetch_data_post(url, post_data) {
+			return new Promise(function (resolve, reject) {
+				request.post(url).set("Content-Type", "application/x-www-form-urlencoded").send(post_data).end(function (error, result) {
+					error ? reject(error) : resolve(result);
+				});
+			});
+		}
+	};
+
+/***/ },
+/* 304 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 
 	/**
@@ -6132,9 +6154,9 @@ webpackJsonp([0,6],[
 	  root = undefined;
 	}
 
-	var Emitter = __webpack_require__(304);
-	var requestBase = __webpack_require__(305);
-	var isObject = __webpack_require__(306);
+	var Emitter = __webpack_require__(305);
+	var requestBase = __webpack_require__(306);
+	var isObject = __webpack_require__(307);
 
 	/**
 	 * Noop.
@@ -6146,7 +6168,7 @@ webpackJsonp([0,6],[
 	 * Expose `request`.
 	 */
 
-	var request = module.exports = __webpack_require__(307).bind(null, Request);
+	var request = module.exports = __webpack_require__(308).bind(null, Request);
 
 	/**
 	 * Determine XHR.
@@ -7096,7 +7118,7 @@ webpackJsonp([0,6],[
 	};
 
 /***/ },
-/* 304 */
+/* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7260,7 +7282,7 @@ webpackJsonp([0,6],[
 	};
 
 /***/ },
-/* 305 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7268,7 +7290,7 @@ webpackJsonp([0,6],[
 	/**
 	 * Module of mixed-in functions shared between node and client code
 	 */
-	var isObject = __webpack_require__(306);
+	var isObject = __webpack_require__(307);
 
 	/**
 	 * Clear previous timeout.
@@ -7611,7 +7633,7 @@ webpackJsonp([0,6],[
 	};
 
 /***/ },
-/* 306 */
+/* 307 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -7633,7 +7655,7 @@ webpackJsonp([0,6],[
 	module.exports = isObject;
 
 /***/ },
-/* 307 */
+/* 308 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -7672,13 +7694,13 @@ webpackJsonp([0,6],[
 	module.exports = request;
 
 /***/ },
-/* 308 */
+/* 309 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(309);
+	var content = __webpack_require__(310);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(245)(content, {});
@@ -7698,7 +7720,7 @@ webpackJsonp([0,6],[
 	}
 
 /***/ },
-/* 309 */
+/* 310 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(244)();
@@ -7712,12 +7734,7 @@ webpackJsonp([0,6],[
 
 
 /***/ },
-/* 310 */,
-/* 311 */,
-/* 312 */,
-/* 313 */,
-/* 314 */,
-/* 315 */
+/* 311 */
 /***/ function(module, exports) {
 
 	"use strict";

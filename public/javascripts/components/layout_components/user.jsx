@@ -1,6 +1,6 @@
 import React from "react";
 import { browserHistory } from "react-router";
-import request from "superagent";
+import { fetch_data_post } from "../../../../fetch_function/fetch.js";
 import { Modal, Button, Input, message, Alert } from "antd";
 
 class User extends React.Component{
@@ -34,14 +34,9 @@ class User extends React.Component{
     		_this.setState({ confirmLoading: false, error_message : "请填写完表单"});
 	    	return;
     	};
-    	request.post("/api/login")
-	    	.set("Content-Type", "application/json")
-	    	.send({ API_USER : API_USER, API_KEY : API_KEY })
-	    	.end(function(error, result){
-	    		if(error){
-	    			console.log(error);
-	    		};
-	    		if(result.body.error){
+    	fetch_data_post("/api/login", {apiUser : API_USER, apiKey : API_KEY})
+    		.then((result) => {
+    			if(result.body.error){
 	    			_this.setState({ confirmLoading: false, error_message : result.body.error});
 	    			return;
 	    		};
@@ -53,7 +48,8 @@ class User extends React.Component{
 	    		localStorage.sc_client_api_key = API_KEY;
 	    		setTimeout(() => { message.success("登录成功") }, 500);
 	    		browserHistory.push("/send_email/sending");
-	    	});
+    		})
+    		.catch((error) => { console.log(error) });
   	}
 
   	handleCancel(){

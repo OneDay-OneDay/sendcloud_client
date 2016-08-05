@@ -1,3 +1,4 @@
 {
-  "plugins": [["antd", { "style": "css" }]]
+	"presets": ["es2015"],
+  	"plugins": [["antd", { "style": "css" }]]
 }
