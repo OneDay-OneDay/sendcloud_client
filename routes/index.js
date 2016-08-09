@@ -22,7 +22,7 @@ router.post("/api/login", function(req, res, next){
 	fetch_data_get("http://api.sendcloud.net/apiv2/userinfo/get", { apiUser: apiUser, apiKey: apiKey })
 		.then((result) => {
 			if(!result.body.result){
-				res.json({ error : "错误的API_USER或API_KEY" });
+				res.json({ error : result.body.message });
 				return;
 			};
 			var user_name = result.body.info.userName;
@@ -102,6 +102,69 @@ router.post("/api/template_send", function(req, res, next){
 				return false;
 			};
 			res.json({ error: false, message: "邮件发送成功！" });
+		})
+		.catch((error) => { console.log(error) });
+});
+
+// 获取邮件模板数据
+router.get("/api/get_template_data", function(req, res, next){
+	fetch_data_get("http://api.sendcloud.net/apiv2/template/list", req.query)
+		.then((result) => {
+			console.log(result.body);
+			var template_data = result.body.info.dataList;
+			res.json({ template_data : template_data });
+		})
+		.catch((error) => { console.log(error) });
+});
+
+// 获取邮件模板预览
+router.get("/api/template_preview", function(req, res, next){
+	fetch_data_get("http://api.sendcloud.net/apiv2/template/get", req.query)
+		.then((result) => {
+			console.log(result.body);
+			var template_html = result.body.info.data.html;
+			res.json({ template_html : template_html });
+		})
+		.catch((error) => { console.log(error) });
+});
+
+// 获取地址列表数据
+router.get("/api/get_address_list_data", function(req, res, next){
+	fetch_data_get("http://api.sendcloud.net/apiv2/addresslist/list", req.query)
+		.then((result) => {
+			console.log(result.body);
+			var address_list_data = result.body.info.dataList;
+			res.json({ address_list_data : address_list_data });
+		})
+		.catch((error) => { console.log(error) });
+});
+
+// 获取邮件标签数据
+router.get("/api/get_label_list_data", function(req, res, next){
+	fetch_data_get("http://api.sendcloud.net/apiv2/label/list", req.query)
+		.then((result) => {
+			console.log(result.body);
+			var label_list_data = result.body.info.dataList;
+			res.json({ label_list_data : label_list_data });
+		})
+		.catch((error) => { console.log(error) });
+});
+
+// 邮件标签删除
+router.get("/api/delete_label", function(req, res, next){
+	var apiUser = req.query.apiUser;
+	var apiKey = req.query.apiKey;
+	fetch_data_get("http://api.sendcloud.net/apiv2/label/delete", req.query)
+		.then((result) => {
+			console.log(result.body);
+			// 获取删除指定项后的标签数据
+			fetch_data_get("http://api.sendcloud.net/apiv2/label/list", {apiUser: apiUser, apiKey: apiKey})
+				.then((result) => {
+					console.log(result.body);
+					var label_list_data = result.body.info.dataList;
+					res.json({ message: "标签删除成功！", label_list_data : label_list_data });
+				})
+				.catch((error) => { console.log(error) });
 		})
 		.catch((error) => { console.log(error) });
 });

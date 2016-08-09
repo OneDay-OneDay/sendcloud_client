@@ -1,0 +1,15 @@
+.SE_template_wrap{
+	padding-top: 40px;
+	.SE_template{
+		.ant-table{
+			td{
+				max-width: 80px;
+			}
+		}
+	}
+}
+.preview_box{
+	.ant-modal{
+		width: 680px !important;
+	}
+}

@@ -38,28 +38,28 @@ webpackJsonp([0,8],[
 			_react2.default.createElement(_reactRouter.Redirect, { from: "/send_email/sending", to: "/send_email" }),
 			_react2.default.createElement(_reactRouter.Route, { path: "/send_email/template", onEnter: _auth2.default.replace_away, getComponent: function getComponent(nextState, callback) {
 					__webpack_require__.e/* nsure */(2, function (require) {
-						callback(null, __webpack_require__(385).default);
+						callback(null, __webpack_require__(399).default);
 					});
 				} }),
 			_react2.default.createElement(_reactRouter.Route, { path: "/send_email/address", onEnter: _auth2.default.replace_away, getComponent: function getComponent(nextState, callback) {
 					__webpack_require__.e/* nsure */(3, function (require) {
-						callback(null, __webpack_require__(386).default);
+						callback(null, __webpack_require__(455).default);
 					});
 				} }),
-			_react2.default.createElement(_reactRouter.Route, { path: "/send_email/setting", onEnter: _auth2.default.replace_away, getComponent: function getComponent(nextState, callback) {
+			_react2.default.createElement(_reactRouter.Route, { path: "/send_email/label", onEnter: _auth2.default.replace_away, getComponent: function getComponent(nextState, callback) {
 					__webpack_require__.e/* nsure */(4, function (require) {
-						callback(null, __webpack_require__(387).default);
+						callback(null, __webpack_require__(458).default);
 					});
 				} }),
 			_react2.default.createElement(_reactRouter.Route, { path: "/send_email/notlogin", onEnter: _auth2.default.already_login, getComponent: function getComponent(nextState, callback) {
 					__webpack_require__.e/* nsure */(5, function (require) {
-						callback(null, __webpack_require__(388).default);
+						callback(null, __webpack_require__(461).default);
 					});
 				} })
 		),
 		_react2.default.createElement(_reactRouter.Route, { path: "*", getComponent: function getComponent(nextState, callback) {
 				__webpack_require__.e/* nsure */(6, function (require) {
-					callback(null, __webpack_require__(391).default);
+					callback(null, __webpack_require__(464).default);
 				});
 			} })
 	), document.getElementById("app"));
@@ -440,6 +440,15 @@ webpackJsonp([0,8],[
 						null,
 						_react2.default.createElement(
 							_reactRouter.Link,
+							{ to: "/send_email/label", activeClassName: "active" },
+							"邮件标签"
+						)
+					),
+					_react2.default.createElement(
+						"li",
+						null,
+						_react2.default.createElement(
+							_reactRouter.Link,
 							{ to: "/send_email/template", activeClassName: "active" },
 							"邮件模板"
 						)
@@ -451,15 +460,6 @@ webpackJsonp([0,8],[
 							_reactRouter.Link,
 							{ to: "/send_email/address", activeClassName: "active" },
 							"地址列表"
-						)
-					),
-					_react2.default.createElement(
-						"li",
-						null,
-						_react2.default.createElement(
-							_reactRouter.Link,
-							{ to: "/send_email/setting", activeClassName: "active" },
-							"账户设置"
 						)
 					)
 				);
@@ -7728,7 +7728,7 @@ webpackJsonp([0,8],[
 
 
 	// module
-	exports.push([module.id, "* {\n  margin: 0;\n  padding: 0; }\n\nhtml, body {\n  width: 100%; }\n  html .ant-modal-wrap .input_wrap, body .ant-modal-wrap .input_wrap {\n    width: 400px;\n    margin: 10px auto;\n    overflow: hidden;\n    line-height: 30px; }\n    html .ant-modal-wrap .input_wrap .ant-input, body .ant-modal-wrap .input_wrap .ant-input {\n      width: 300px;\n      float: right; }\n  html .ant-modal-wrap .error_message, body .ant-modal-wrap .error_message {\n    width: 400px;\n    margin: 15px auto;\n    overflow: hidden; }\n    html .ant-modal-wrap .error_message .ant-alert-error, body .ant-modal-wrap .error_message .ant-alert-error {\n      width: 300px;\n      float: right; }\n  html #app, body #app {\n    width: 100%; }\n    html #app .container, body #app .container {\n      width: 100%; }\n      html #app .container .nav, body #app .container .nav {\n        position: fixed;\n        top: 0;\n        left: 0;\n        width: 256px;\n        height: 100%;\n        background-color: #333333;\n        box-sizing: border-box;\n        -moz-box-sizing: border-box;\n        -webkit-box-sizing: border-box; }\n        html #app .container .nav .logo_area, body #app .container .nav .logo_area {\n          width: 100%;\n          height: 80px;\n          text-align: center;\n          line-height: 80px;\n          font-size: 20px;\n          color: #FFF; }\n        html #app .container .nav li, body #app .container .nav li {\n          list-style-type: none; }\n          html #app .container .nav li a, body #app .container .nav li a {\n            display: inline-block;\n            width: 100%;\n            height: 45px;\n            text-decoration: none;\n            padding-left: 20%;\n            line-height: 45px;\n            color: #707171;\n            font-size: 14px;\n            box-sizing: border-box;\n            -moz-box-sizing: border-box;\n            -webkit-box-sizing: border-box; }\n          html #app .container .nav li a:hover, body #app .container .nav li a:hover {\n            color: #FFF !important; }\n          html #app .container .nav li .active, body #app .container .nav li .active {\n            color: #FFF !important;\n            background-color: #2db7f5; }\n      html #app .container .content_banner, body #app .container .content_banner {\n        width: 100%;\n        height: 80px;\n        overflow: hidden;\n        box-sizing: border-box;\n        -moz-box-sizing: border-box;\n        -webkit-box-sizing: border-box;\n        border-bottom: 1px solid #ededed; }\n        html #app .container .content_banner .user, body #app .container .content_banner .user {\n          width: 25%;\n          height: 100%;\n          float: right;\n          border-left: 1px solid #ededed; }\n          html #app .container .content_banner .user .user_box, body #app .container .content_banner .user .user_box {\n            width: 100%;\n            height: 100%;\n            font-size: 14px;\n            overflow: hidden; }\n            html #app .container .content_banner .user .user_box .user_name, body #app .container .content_banner .user .user_box .user_name {\n              width: 70%;\n              height: 100%;\n              float: left;\n              line-height: 80px;\n              text-align: center; }\n            html #app .container .content_banner .user .user_box .user_state, body #app .container .content_banner .user .user_box .user_state {\n              width: 30%;\n              height: 100%;\n              float: right;\n              line-height: 80px;\n              cursor: pointer; }\n      html #app .container .content_main, body #app .container .content_main {\n        width: 100%;\n        padding-left: 256px;\n        background-color: #FFF;\n        box-sizing: border-box;\n        -moz-box-sizing: border-box;\n        -webkit-box-sizing: border-box;\n        border: 1px solid #ededed;\n        border-top: none;\n        border-left: none; }\n        html #app .container .content_main .content_main_box, body #app .container .content_main .content_main_box {\n          width: 90%;\n          min-height: 650px;\n          margin: 0 auto;\n          box-sizing: border-box;\n          -moz-box-sizing: border-box;\n          -webkit-box-sizing: border-box;\n          border: 1px solid #ededed;\n          border-top: none; }\n", ""]);
+	exports.push([module.id, "* {\n  margin: 0;\n  padding: 0; }\n\nhtml, body {\n  width: 100%; }\n  html .ant-modal-wrap .input_wrap, body .ant-modal-wrap .input_wrap {\n    width: 400px;\n    margin: 10px auto;\n    overflow: hidden;\n    line-height: 30px; }\n    html .ant-modal-wrap .input_wrap .ant-input, body .ant-modal-wrap .input_wrap .ant-input {\n      width: 300px;\n      float: right; }\n  html .ant-modal-wrap .error_message, body .ant-modal-wrap .error_message {\n    width: 400px;\n    margin: 15px auto;\n    overflow: hidden; }\n    html .ant-modal-wrap .error_message .ant-alert-error, body .ant-modal-wrap .error_message .ant-alert-error {\n      width: 300px;\n      float: right; }\n  html #app, body #app {\n    width: 100%; }\n    html #app .container, body #app .container {\n      width: 100%; }\n      html #app .container .nav, body #app .container .nav {\n        position: fixed;\n        top: 0;\n        left: 0;\n        width: 256px;\n        height: 100%;\n        background-color: #333333;\n        box-sizing: border-box;\n        -moz-box-sizing: border-box;\n        -webkit-box-sizing: border-box; }\n        html #app .container .nav .logo_area, body #app .container .nav .logo_area {\n          width: 100%;\n          height: 80px;\n          text-align: center;\n          line-height: 80px;\n          font-size: 20px;\n          color: #FFF; }\n        html #app .container .nav li, body #app .container .nav li {\n          list-style-type: none; }\n          html #app .container .nav li a, body #app .container .nav li a {\n            display: inline-block;\n            width: 100%;\n            height: 45px;\n            text-decoration: none;\n            padding-left: 20%;\n            line-height: 45px;\n            color: #707171;\n            font-size: 14px;\n            box-sizing: border-box;\n            -moz-box-sizing: border-box;\n            -webkit-box-sizing: border-box; }\n          html #app .container .nav li a:hover, body #app .container .nav li a:hover {\n            color: #FFF !important; }\n          html #app .container .nav li .active, body #app .container .nav li .active {\n            color: #FFF !important;\n            background-color: #2db7f5; }\n      html #app .container .content_banner, body #app .container .content_banner {\n        width: 100%;\n        height: 80px;\n        overflow: hidden;\n        box-sizing: border-box;\n        -moz-box-sizing: border-box;\n        -webkit-box-sizing: border-box;\n        border-bottom: 1px solid #ededed; }\n        html #app .container .content_banner .user, body #app .container .content_banner .user {\n          width: 25%;\n          height: 100%;\n          float: right; }\n          html #app .container .content_banner .user .user_box, body #app .container .content_banner .user .user_box {\n            width: 100%;\n            height: 100%;\n            font-size: 14px;\n            overflow: hidden; }\n            html #app .container .content_banner .user .user_box .user_name, body #app .container .content_banner .user .user_box .user_name {\n              width: 70%;\n              height: 100%;\n              float: left;\n              line-height: 80px;\n              text-align: center; }\n            html #app .container .content_banner .user .user_box .user_state, body #app .container .content_banner .user .user_box .user_state {\n              width: 30%;\n              height: 100%;\n              float: right;\n              line-height: 80px;\n              cursor: pointer; }\n      html #app .container .content_main, body #app .container .content_main {\n        width: 100%;\n        padding-left: 256px;\n        background-color: #FFF;\n        box-sizing: border-box;\n        -moz-box-sizing: border-box;\n        -webkit-box-sizing: border-box; }\n        html #app .container .content_main .content_main_box, body #app .container .content_main .content_main_box {\n          width: 90%;\n          min-height: 650px;\n          margin: 0 auto;\n          box-sizing: border-box;\n          -moz-box-sizing: border-box;\n          -webkit-box-sizing: border-box; }\n", ""]);
 
 	// exports
 

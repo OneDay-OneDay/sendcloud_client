@@ -22,9 +22,9 @@ ReactDOM.render(
 					require.ensure( [ ], (require) => { 
 						callback(null, require("../components/page_components/address.jsx").default) 
 					}) } } />
-				<Route path="/send_email/setting" onEnter={ auth.replace_away } getComponent={ (nextState, callback) =>{ 
+				<Route path="/send_email/label" onEnter={ auth.replace_away } getComponent={ (nextState, callback) =>{ 
 					require.ensure( [ ], (require) => { 
-						callback(null, require("../components/page_components/setting.jsx").default) 
+						callback(null, require("../components/page_components/label.jsx").default) 
 					}) } } />
 				<Route path="/send_email/notlogin" onEnter={ auth.already_login } getComponent={ (nextState, callback) =>{ 
 					require.ensure( [ ], (require) => { 

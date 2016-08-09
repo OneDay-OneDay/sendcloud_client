@@ -23,6 +23,7 @@ class Sending extends React.Component{
 			c_to : "",
 			c_address : "",
 			c_subject : "",
+			c_label : "",
 			c_content : "",
 			// 模板发送
 			template_send_loading : false,
@@ -30,6 +31,7 @@ class Sending extends React.Component{
 			t_from : "",
 			t_to : "",
 			t_subject : "",
+			t_label : "",
 			template_name : "",
 			// 是否使用地址列表
 			c_use_mail_list : false,
@@ -78,6 +80,9 @@ class Sending extends React.Component{
 			case "c_subject" :
 				this.setState({ c_subject : event.target.value });
 				break;
+			case "c_label" :
+				this.setState({ c_label : value.key });
+				break;
 			case "c_content" :
 				this.setState({ c_content : event.target.value });
 				break;
@@ -105,6 +110,9 @@ class Sending extends React.Component{
 				break;
 			case "t_subject" :
 				this.setState({ t_subject : event.target.value });
+				break;
+			case "t_label" : 
+				this.setState({ t_label : value.key });
 				break;
 			case "template" :
 				this.setState({ template_name : value.key });
@@ -139,9 +147,11 @@ class Sending extends React.Component{
 			// 地址列表
 			let c_address = this.state.c_address;
 			let c_subject = this.state.c_subject;
+			let c_label = this.state.c_label;
 			let c_content = this.state.c_content;
 
-			let c_data = this.state.c_use_mail_list == false ? [c_api_user,c_from,c_to,c_subject,c_content] : [c_api_user,c_from,c_address,c_subject,c_content];
+			// 如果没有使用地址列表则使用c_to作为发送地址，不然，使用c_address
+			let c_data = this.state.c_use_mail_list == false ? [c_api_user,c_from,c_to,c_subject,c_label,c_content] : [c_api_user,c_from,c_address,c_subject,c_label,c_content];
 
 			console.log(c_data);
 			// 验证输入
@@ -158,6 +168,7 @@ class Sending extends React.Component{
 						from : c_from, 
 						to : c_address,
 						subject : c_subject,
+						labelId : parseInt(c_label),
 						html : c_content,
 						useAddressList : true
 					}
@@ -169,6 +180,7 @@ class Sending extends React.Component{
 						from : c_from, 
 						xsmtpapi : JSON.stringify({ "to" : c_to.split(";") }),
 						subject : c_subject,
+						labelId : parseInt(c_label),
 						html : c_content
 					}
 				};
@@ -198,9 +210,11 @@ class Sending extends React.Component{
 			// 地址列表
 			let t_address = this.state.t_address;
 			let t_subject = this.state.t_subject;
+			let t_label = this.state.t_label;
 			let template_name = this.state.template_name;
 
-			let t_data = this.state.t_use_mail_list == false ? [t_api_user,t_from,t_to,t_subject,template_name] : [t_api_user,t_from,t_address,t_subject,template_name];			
+			// 如果没有使用地址列表则使用t_to作为发送地址，不然，使用t_address
+			let t_data = this.state.t_use_mail_list == false ? [t_api_user,t_from,t_to,t_subject,t_label,template_name] : [t_api_user,t_from,t_address,t_subject,t_label,template_name];			
 
 			console.log(t_data);
 			// 验证输入
@@ -218,6 +232,7 @@ class Sending extends React.Component{
 						from : t_from, 
 						to : t_address,
 						subject : t_subject,
+						t_label : parseInt(t_label),
 						templateInvokeName : template_name,
 						useAddressList : true
 					}
@@ -229,6 +244,7 @@ class Sending extends React.Component{
 						from : t_from, 
 						xsmtpapi : JSON.stringify({ "to" : t_to.split(";") }),
 						subject : t_subject,
+						t_label : parseInt(t_label),
 						templateInvokeName : template_name
 					}
 				};
