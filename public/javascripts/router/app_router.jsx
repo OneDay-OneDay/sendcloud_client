@@ -18,10 +18,16 @@ ReactDOM.render(
 					require.ensure( [ ], (require) => { 
 						callback(null, require("../components/page_components/template.jsx").default) 
 					}) } } />
-				<Route path="/send_email/address" onEnter={ auth.replace_away } getComponent={ (nextState, callback) =>{ 
-					require.ensure( [ ], (require) => { 
-						callback(null, require("../components/page_components/address.jsx").default) 
-					}) } } />
+				<Route path="/send_email/address" onEnter={ auth.replace_away }>
+					<IndexRoute getComponent={ (nextState, callback) =>{ 
+						require.ensure( [ ], (require) => { 
+							callback(null, require("../components/page_components/address.jsx").default) 
+						}) } } />
+					<Route path="/send_email/address_datail/:address" getComponent={ (nextState, callback) =>{ 
+						require.ensure( [ ], (require) => {
+							callback(null, require("../components/page_components/address_detail.jsx").default) 
+						}) } } />
+				</Route>
 				<Route path="/send_email/label" onEnter={ auth.replace_away } getComponent={ (nextState, callback) =>{ 
 					require.ensure( [ ], (require) => { 
 						callback(null, require("../components/page_components/label.jsx").default) 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, notification } from "antd";
+import { Table, notification, Button, Modal, Alert, Input } from "antd";
 import { fetch_data_get } from "../../../../fetch_function/fetch.js";
 
 import "../../../stylesheets/page_components/label.scss";
@@ -8,7 +8,12 @@ class Setting extends React.Component{
 	constructor(props){
 		super(props);
 		window.scrollTo(0,0);
-		this.state={ label_list_data : [{  }] };
+		this.state={ 
+			label_list_data : [{  }],
+			confirmLoading : false,
+      		visible : false,
+      		error_message : ""
+		};
 	}
 
 	//get label_list_data
@@ -30,6 +35,41 @@ class Setting extends React.Component{
 				});
 			})
 			.catch((error) => { console.log(error) });
+	}
+
+	add_label(){
+		this.setState({ visible: true, error_message : "" });
+	}
+
+	handleSubmit(){
+		var _this = this;
+  		var label_name = this.refs.label_name.refs.input.value;
+  		this.setState({ confirmLoading: true });
+  		if(label_name == "" || typeof(label_name) == "undefined"){
+    		_this.setState({ confirmLoading: false, error_message : "请填写标签名"});
+	    	return;
+    	};
+    	fetch_data_get("/api/add_label", { apiUser : localStorage.sc_client_api_user, apiKey : localStorage.sc_client_api_key, labelName : label_name })
+    		.then((result) => {
+    			_this.setState({ confirmLoading: false, visible: false });
+    			if(result.body.error){
+					notification["error"]({
+			      		message: "错误",
+			      		description: result.body.message,
+			    	});
+			    	return false;
+				};
+    			notification["success"]({
+			      	message: "消息",
+			      	description: result.body.message
+			    });
+	    		_this.setState({ label_list_data : result.body.label_list_data });
+    		})
+    		.catch((error) => { console.log(error) });
+	}
+
+	handleCancel(){
+		this.setState({ visible: false });
 	}
 
 	delete_label(labelId){
@@ -59,7 +99,19 @@ class Setting extends React.Component{
 		return(
 			<div className="SE_label_wrap">
 				<div className="SE_label">
+					<Button type="primary" onClick = { (  ) => this.add_label() }>添加标签</Button>
 					<Table columns={ columns } dataSource={ this.state.label_list_data } />
+					<Modal title = "添加新标签"
+			          	visible = { this.state.visible }
+			          	onOk = { () => this.handleSubmit() }
+			          	confirmLoading = { this.state.confirmLoading }
+			          	onCancel = { () => this.handleCancel() }
+			        >
+			        	<div className = "input_wrap">标签名称: <Input ref = "label_name" size = "large" placeholder = "" /></div>
+			        	<div className = "error_message" style = {{ "display" : this.state.error_message == "" ? "none" : "block" }}>
+			        		<Alert message = { this.state.error_message } type = "error" showIcon />
+			        	</div>
+			        </Modal>
 				</div>
 			</div>
 		);

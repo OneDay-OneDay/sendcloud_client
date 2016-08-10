@@ -1,4 +1,4 @@
-webpackJsonp([2,8],Array(320).concat([
+webpackJsonp([15,8],Array(320).concat([
 /* 320 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -7277,180 +7277,7 @@ webpackJsonp([2,8],Array(320).concat([
 /* 396 */,
 /* 397 */,
 /* 398 */,
-/* 399 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _css = __webpack_require__(241);
-
-	var _modal = __webpack_require__(251);
-
-	var _modal2 = _interopRequireDefault(_modal);
-
-	var _css2 = __webpack_require__(400);
-
-	var _table = __webpack_require__(415);
-
-	var _table2 = _interopRequireDefault(_table);
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _fetch = __webpack_require__(303);
-
-	__webpack_require__(453);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Template = function (_React$Component) {
-		_inherits(Template, _React$Component);
-
-		function Template(props) {
-			_classCallCheck(this, Template);
-
-			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Template).call(this, props));
-
-			window.scrollTo(0, 0);
-			_this2.state = {
-				template_data: [{}],
-				preview_visible: false,
-				template_html: ""
-			};
-			return _this2;
-		}
-
-		//get template_data
-
-
-		_createClass(Template, [{
-			key: "componentDidMount",
-			value: function componentDidMount() {
-				var _this = this;
-				(0, _fetch.fetch_data_get)("/api/get_template_data", { apiUser: localStorage.sc_client_api_user, apiKey: localStorage.sc_client_api_key }).then(function (result) {
-					var template_data = [];
-					result.body.template_data.map(function (ele, key) {
-						template_data.push({
-							key: key,
-							name: ele.name,
-							invokeName: ele.invokeName,
-							templateType: parseInt(ele.templateType) == 1 ? "批量" : "触发",
-							templateStat: parseInt(ele.templateStat) == 1 ? "审核通过" : "待审核",
-							gmtUpdated: ele.gmtUpdated
-						});
-					});
-					_this.setState({
-						template_data: template_data
-					});
-				}).catch(function (error) {
-					console.log(error);
-				});
-			}
-		}, {
-			key: "preview",
-			value: function preview(invokeName) {
-				var _this3 = this;
-
-				this.setState({ preview_visible: true });
-				(0, _fetch.fetch_data_get)("/api/template_preview", { apiUser: localStorage.sc_client_api_user, apiKey: localStorage.sc_client_api_key, invokeName: invokeName }).then(function (result) {
-					_this3.setState({ template_html: result.body.template_html });
-				}).catch(function (error) {
-					console.log(error);
-				});
-			}
-		}, {
-			key: "preview_close",
-			value: function preview_close() {
-				this.setState({ preview_visible: false });
-			}
-		}, {
-			key: "render",
-			value: function render() {
-				var _this4 = this;
-
-				var columns = [{ title: "模板名称", dataIndex: "name", key: "name", render: function render(text) {
-						return _react2.default.createElement(
-							"a",
-							{ href: "#" },
-							text
-						);
-					} }, { title: "调用名称", dataIndex: "invokeName", key: "invokeName" }, { title: "模板类型", dataIndex: "templateType", key: "templateType" }, { title: "审核状态", dataIndex: "templateStat", key: "templateStat" }, { title: "更新时间", dataIndex: "gmtUpdated", key: "gmtUpdated" }, { title: "操作", key: "operation", render: function render(text, record) {
-						return _react2.default.createElement(
-							"span",
-							null,
-							_react2.default.createElement(
-								"a",
-								{ href: "#", onClick: function onClick() {
-										return _this4.preview(record.invokeName);
-									} },
-								"预览"
-							),
-							_react2.default.createElement("span", { className: "ant-divider" }),
-							_react2.default.createElement(
-								"a",
-								{ href: "#" },
-								"编辑"
-							),
-							_react2.default.createElement("span", { className: "ant-divider" }),
-							_react2.default.createElement(
-								"a",
-								{ href: "#" },
-								"删除"
-							)
-						);
-					}
-				}];
-				return _react2.default.createElement(
-					"div",
-					{ className: "SE_template_wrap" },
-					_react2.default.createElement(
-						"div",
-						{ className: "SE_template" },
-						_react2.default.createElement(_table2.default, { columns: columns, dataSource: this.state.template_data })
-					),
-					_react2.default.createElement(
-						_modal2.default,
-						{ wrapClassName: "preview_box",
-							title: "预览",
-							visible: this.state.preview_visible,
-							onOk: function onOk() {
-								return _this4.preview_close();
-							},
-							onCancel: function onCancel() {
-								return _this4.preview_close();
-							}
-						},
-						_react2.default.createElement(
-							"iframe",
-							{ srcDoc: this.state.template_html, frameBorder: "0", width: "100%", height: "350px" },
-							this.state.template_html
-						)
-					)
-				);
-			}
-		}]);
-
-		return Template;
-	}(_react2.default.Component);
-
-	;
-
-	exports.default = Template;
-
-/***/ },
+/* 399 */,
 /* 400 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -13256,13 +13083,131 @@ webpackJsonp([2,8],Array(320).concat([
 	}
 
 /***/ },
-/* 453 */
+/* 453 */,
+/* 454 */,
+/* 455 */,
+/* 456 */,
+/* 457 */,
+/* 458 */,
+/* 459 */,
+/* 460 */,
+/* 461 */,
+/* 462 */,
+/* 463 */,
+/* 464 */,
+/* 465 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _css = __webpack_require__(400);
+
+	var _table = __webpack_require__(415);
+
+	var _table2 = _interopRequireDefault(_table);
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _fetch = __webpack_require__(303);
+
+	__webpack_require__(466);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Address_detail = function (_React$Component) {
+		_inherits(Address_detail, _React$Component);
+
+		function Address_detail(props) {
+			_classCallCheck(this, Address_detail);
+
+			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Address_detail).call(this, props));
+
+			window.scrollTo(0, 0);
+			_this2.state = {
+				address_detail_data: [{}]
+			};
+			return _this2;
+		}
+
+		//get address_datail_data
+
+
+		_createClass(Address_detail, [{
+			key: "componentDidMount",
+			value: function componentDidMount() {
+				var _this = this;
+				(0, _fetch.fetch_data_get)("/api/get_address_detail_data", { apiUser: localStorage.sc_client_api_user, apiKey: localStorage.sc_client_api_key, address: this.props.params.address }).then(function (result) {
+					var address_detail_data = [];
+					result.body.address_detail_data.map(function (ele, key) {
+						address_detail_data.push({
+							key: key,
+							member: ele.member,
+							name: ele.name || "",
+							vars: ele.vars || "",
+							gmtCreated: ele.gmtCreated
+						});
+					});
+					_this.setState({
+						address_detail_data: address_detail_data
+					});
+				}).catch(function (error) {
+					console.log(error);
+				});
+			}
+		}, {
+			key: "render",
+			value: function render() {
+				var columns = [{ title: "地址", dataIndex: "member", key: "member" }, { title: "姓名", dataIndex: "name", key: "name" }, { title: "变量", dataIndex: "vars", key: "vars" }, { title: "创建日期", dataIndex: "gmtCreated", key: "gmtCreated" }, { title: "操作", key: "operation", render: function render(text, record) {
+						return _react2.default.createElement(
+							"span",
+							null,
+							_react2.default.createElement(
+								"a",
+								{ href: "#" },
+								"删除"
+							)
+						);
+					}
+				}];
+				return _react2.default.createElement(
+					"div",
+					{ className: "SE_address_detail_wrap" },
+					_react2.default.createElement(
+						"div",
+						{ className: "SE_address_detail" },
+						_react2.default.createElement(_table2.default, { columns: columns, dataSource: this.state.address_detail_data })
+					)
+				);
+			}
+		}]);
+
+		return Address_detail;
+	}(_react2.default.Component);
+
+	exports.default = Address_detail;
+
+/***/ },
+/* 466 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(454);
+	var content = __webpack_require__(467);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(245)(content, {});
@@ -13271,8 +13216,8 @@ webpackJsonp([2,8],Array(320).concat([
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./template.scss", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./template.scss");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./address_detail.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./address_detail.scss");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -13282,7 +13227,7 @@ webpackJsonp([2,8],Array(320).concat([
 	}
 
 /***/ },
-/* 454 */
+/* 467 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(244)();
@@ -13290,7 +13235,7 @@ webpackJsonp([2,8],Array(320).concat([
 
 
 	// module
-	exports.push([module.id, ".SE_template_wrap {\n  padding-top: 40px; }\n  .SE_template_wrap .SE_template .ant-table td {\n    max-width: 80px; }\n\n.preview_box .ant-modal {\n  width: 680px !important; }\n", ""]);
+	exports.push([module.id, ".SE_address_detail_wrap {\n  padding-top: 40px; }\n  .SE_address_detail_wrap .SE_address_detail .ant-table td {\n    max-width: 50px; }\n", ""]);
 
 	// exports
 

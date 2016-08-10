@@ -1,4 +1,4 @@
-webpackJsonp([2,8],Array(320).concat([
+webpackJsonp([12,8],Array(320).concat([
 /* 320 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -2227,10 +2227,184 @@ webpackJsonp([2,8],Array(320).concat([
 
 /***/ },
 /* 339 */,
-/* 340 */,
-/* 341 */,
-/* 342 */,
-/* 343 */,
+/* 340 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	__webpack_require__(242);
+
+	__webpack_require__(341);
+
+/***/ },
+/* 341 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(342);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(245)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../../../../../css-loader/index.js!./index.css", function() {
+				var newContent = require("!!./../../../../../../../css-loader/index.js!./index.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 342 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(244)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".ant-notification {\n  position: fixed;\n  z-index: 1010;\n  width: 335px;\n  margin-right: 24px;\n}\n.ant-notification-notice {\n  padding: 16px;\n  border-radius: 6px;\n  box-shadow: 0 1px 8px rgba(100, 100, 100, 0.2);\n  border: 1px solid #d9d9d9;\n  background: #fff;\n  line-height: 1.5;\n  position: relative;\n  margin-bottom: 10px;\n  overflow: hidden;\n}\n.ant-notification-notice-message {\n  font-size: 14px;\n  color: #666;\n  margin-bottom: 4px;\n}\n.ant-notification-notice-description {\n  font-size: 12px;\n  color: #999;\n}\n.ant-notification-notice-with-icon .ant-notification-notice-message {\n  font-size: 14px;\n  color: #666;\n  margin-left: 51px;\n  margin-bottom: 4px;\n}\n.ant-notification-notice-with-icon .ant-notification-notice-description {\n  margin-left: 51px;\n  font-size: 12px;\n  color: #999;\n}\n.ant-notification-notice-icon {\n  position: absolute;\n  left: 16px;\n  top: 50%;\n  margin-top: -17px;\n  font-size: 34px;\n}\n.ant-notification-notice-icon-success {\n  color: #87d068;\n}\n.ant-notification-notice-icon-info {\n  color: #2db7f5;\n}\n.ant-notification-notice-icon-warning {\n  color: #fa0;\n}\n.ant-notification-notice-icon-error {\n  color: #f50;\n}\n.ant-notification-notice-close-x:after {\n  font-size: 12px;\n  content: \"\\E62D\";\n  font-family: \"anticon\";\n  cursor: pointer;\n}\n.ant-notification-notice-close {\n  position: absolute;\n  right: 16px;\n  top: 10px;\n  color: #999;\n  outline: none;\n}\n.ant-notification-notice-btn {\n  float: right;\n  margin-top: 16px;\n}\n.ant-notification .notification-fade-effect {\n  -webkit-animation-duration: 0.24s;\n          animation-duration: 0.24s;\n  -webkit-animation-fill-mode: both;\n          animation-fill-mode: both;\n  -webkit-animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);\n          animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);\n}\n.ant-notification-fade-enter,\n.ant-notification-fade-appear {\n  opacity: 0;\n  -webkit-animation-duration: 0.24s;\n          animation-duration: 0.24s;\n  -webkit-animation-fill-mode: both;\n          animation-fill-mode: both;\n  -webkit-animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);\n          animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);\n  -webkit-animation-play-state: paused;\n          animation-play-state: paused;\n}\n.ant-notification-fade-leave {\n  -webkit-animation-duration: 0.24s;\n          animation-duration: 0.24s;\n  -webkit-animation-fill-mode: both;\n          animation-fill-mode: both;\n  -webkit-animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);\n          animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);\n  -webkit-animation-duration: 0.2s;\n          animation-duration: 0.2s;\n  -webkit-animation-play-state: paused;\n          animation-play-state: paused;\n}\n.ant-notification-fade-enter.ant-notification-fade-enter-active,\n.ant-notification-fade-appear.ant-notification-fade-appear-active {\n  -webkit-animation-name: NotificationFadeIn;\n          animation-name: NotificationFadeIn;\n  -webkit-animation-play-state: running;\n          animation-play-state: running;\n}\n.ant-notification-fade-leave.ant-notification-fade-leave-active {\n  -webkit-animation-name: NotificationFadeOut;\n          animation-name: NotificationFadeOut;\n  -webkit-animation-play-state: running;\n          animation-play-state: running;\n}\n@-webkit-keyframes NotificationFadeIn {\n  0% {\n    opacity: 0;\n    left: 335px;\n  }\n  100% {\n    left: 0;\n    opacity: 1;\n  }\n}\n@keyframes NotificationFadeIn {\n  0% {\n    opacity: 0;\n    left: 335px;\n  }\n  100% {\n    left: 0;\n    opacity: 1;\n  }\n}\n@-webkit-keyframes NotificationFadeOut {\n  0% {\n    opacity: 1;\n    margin-bottom: 10px;\n    padding-top: 16px;\n    padding-bottom: 16px;\n    max-height: 150px;\n  }\n  100% {\n    opacity: 0;\n    margin-bottom: 0;\n    padding-top: 0;\n    padding-bottom: 0;\n    max-height: 0;\n  }\n}\n@keyframes NotificationFadeOut {\n  0% {\n    opacity: 1;\n    margin-bottom: 10px;\n    padding-top: 16px;\n    padding-bottom: 16px;\n    max-height: 150px;\n  }\n  100% {\n    opacity: 0;\n    margin-bottom: 0;\n    padding-top: 0;\n    padding-bottom: 0;\n    max-height: 0;\n  }\n}\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 343 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _extends = Object.assign || function (target) {
+	  for (var i = 1; i < arguments.length; i++) {
+	    var source = arguments[i];for (var key in source) {
+	      if (Object.prototype.hasOwnProperty.call(source, key)) {
+	        target[key] = source[key];
+	      }
+	    }
+	  }return target;
+	};
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _rcNotification = __webpack_require__(299);
+
+	var _rcNotification2 = _interopRequireDefault(_rcNotification);
+
+	var _icon = __webpack_require__(276);
+
+	var _icon2 = _interopRequireDefault(_icon);
+
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { "default": obj };
+	}
+
+	var defaultTop = 24;
+	var notificationInstance = void 0;
+	var defaultDuration = 4.5;
+
+	function getNotificationInstance() {
+	  if (notificationInstance) {
+	    return notificationInstance;
+	  }
+	  notificationInstance = _rcNotification2["default"].newInstance({
+	    prefixCls: 'ant-notification',
+	    style: {
+	      top: defaultTop,
+	      right: 0
+	    }
+	  });
+	  return notificationInstance;
+	}
+
+	function notice(args) {
+	  var prefixCls = args.prefixCls || 'ant-notification-notice';
+
+	  var duration = void 0;
+	  if (args.duration === undefined) {
+	    duration = defaultDuration;
+	  } else {
+	    duration = args.duration;
+	  }
+
+	  var iconType = '';
+	  switch (args.icon) {
+	    case 'success':
+	      iconType = 'check-circle-o';
+	      break;
+	    case 'info':
+	      iconType = 'info-circle-o';
+	      break;
+	    case 'error':
+	      iconType = 'cross-circle-o';
+	      break;
+	    case 'warning':
+	      iconType = 'exclamation-circle-o';
+	      break;
+	    default:
+	      iconType = 'info-circle';
+	  }
+
+	  getNotificationInstance().notice({
+	    content: _react2["default"].createElement('div', { className: prefixCls + '-content ' + (args.icon ? prefixCls + '-with-icon' : '') }, args.icon ? _react2["default"].createElement(_icon2["default"], { className: prefixCls + '-icon ' + prefixCls + '-icon-' + args.icon, type: iconType }) : null, _react2["default"].createElement('div', { className: prefixCls + '-message' }, args.message), _react2["default"].createElement('div', { className: prefixCls + '-description' }, args.description), args.btn ? _react2["default"].createElement('span', { className: prefixCls + '-btn' }, args.btn) : null),
+	    duration: duration,
+	    closable: true,
+	    onClose: args.onClose,
+	    key: args.key,
+	    style: {}
+	  });
+	}
+
+	var api = {
+	  open: function open(args) {
+	    notice(args);
+	  },
+	  close: function close(key) {
+	    if (notificationInstance) {
+	      notificationInstance.removeNotice(key);
+	    }
+	  },
+	  config: function config(options) {
+	    if ('top' in options) {
+	      defaultTop = options.top;
+	    }
+	    if ('duration' in options) {
+	      defaultDuration = options.duration;
+	    }
+	  },
+	  destroy: function destroy() {
+	    if (notificationInstance) {
+	      notificationInstance.destroy();
+	      notificationInstance = null;
+	    }
+	  }
+	};
+
+	['success', 'info', 'warning', 'error'].forEach(function (type) {
+	  api[type] = function (args) {
+	    return api.open(_extends({}, args, { icon: type }));
+	  };
+	});
+
+	api.warn = api.warning;
+
+	exports["default"] = api;
+	module.exports = exports['default'];
+
+/***/ },
 /* 344 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -7277,180 +7451,7 @@ webpackJsonp([2,8],Array(320).concat([
 /* 396 */,
 /* 397 */,
 /* 398 */,
-/* 399 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _css = __webpack_require__(241);
-
-	var _modal = __webpack_require__(251);
-
-	var _modal2 = _interopRequireDefault(_modal);
-
-	var _css2 = __webpack_require__(400);
-
-	var _table = __webpack_require__(415);
-
-	var _table2 = _interopRequireDefault(_table);
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _fetch = __webpack_require__(303);
-
-	__webpack_require__(453);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Template = function (_React$Component) {
-		_inherits(Template, _React$Component);
-
-		function Template(props) {
-			_classCallCheck(this, Template);
-
-			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Template).call(this, props));
-
-			window.scrollTo(0, 0);
-			_this2.state = {
-				template_data: [{}],
-				preview_visible: false,
-				template_html: ""
-			};
-			return _this2;
-		}
-
-		//get template_data
-
-
-		_createClass(Template, [{
-			key: "componentDidMount",
-			value: function componentDidMount() {
-				var _this = this;
-				(0, _fetch.fetch_data_get)("/api/get_template_data", { apiUser: localStorage.sc_client_api_user, apiKey: localStorage.sc_client_api_key }).then(function (result) {
-					var template_data = [];
-					result.body.template_data.map(function (ele, key) {
-						template_data.push({
-							key: key,
-							name: ele.name,
-							invokeName: ele.invokeName,
-							templateType: parseInt(ele.templateType) == 1 ? "批量" : "触发",
-							templateStat: parseInt(ele.templateStat) == 1 ? "审核通过" : "待审核",
-							gmtUpdated: ele.gmtUpdated
-						});
-					});
-					_this.setState({
-						template_data: template_data
-					});
-				}).catch(function (error) {
-					console.log(error);
-				});
-			}
-		}, {
-			key: "preview",
-			value: function preview(invokeName) {
-				var _this3 = this;
-
-				this.setState({ preview_visible: true });
-				(0, _fetch.fetch_data_get)("/api/template_preview", { apiUser: localStorage.sc_client_api_user, apiKey: localStorage.sc_client_api_key, invokeName: invokeName }).then(function (result) {
-					_this3.setState({ template_html: result.body.template_html });
-				}).catch(function (error) {
-					console.log(error);
-				});
-			}
-		}, {
-			key: "preview_close",
-			value: function preview_close() {
-				this.setState({ preview_visible: false });
-			}
-		}, {
-			key: "render",
-			value: function render() {
-				var _this4 = this;
-
-				var columns = [{ title: "模板名称", dataIndex: "name", key: "name", render: function render(text) {
-						return _react2.default.createElement(
-							"a",
-							{ href: "#" },
-							text
-						);
-					} }, { title: "调用名称", dataIndex: "invokeName", key: "invokeName" }, { title: "模板类型", dataIndex: "templateType", key: "templateType" }, { title: "审核状态", dataIndex: "templateStat", key: "templateStat" }, { title: "更新时间", dataIndex: "gmtUpdated", key: "gmtUpdated" }, { title: "操作", key: "operation", render: function render(text, record) {
-						return _react2.default.createElement(
-							"span",
-							null,
-							_react2.default.createElement(
-								"a",
-								{ href: "#", onClick: function onClick() {
-										return _this4.preview(record.invokeName);
-									} },
-								"预览"
-							),
-							_react2.default.createElement("span", { className: "ant-divider" }),
-							_react2.default.createElement(
-								"a",
-								{ href: "#" },
-								"编辑"
-							),
-							_react2.default.createElement("span", { className: "ant-divider" }),
-							_react2.default.createElement(
-								"a",
-								{ href: "#" },
-								"删除"
-							)
-						);
-					}
-				}];
-				return _react2.default.createElement(
-					"div",
-					{ className: "SE_template_wrap" },
-					_react2.default.createElement(
-						"div",
-						{ className: "SE_template" },
-						_react2.default.createElement(_table2.default, { columns: columns, dataSource: this.state.template_data })
-					),
-					_react2.default.createElement(
-						_modal2.default,
-						{ wrapClassName: "preview_box",
-							title: "预览",
-							visible: this.state.preview_visible,
-							onOk: function onOk() {
-								return _this4.preview_close();
-							},
-							onCancel: function onCancel() {
-								return _this4.preview_close();
-							}
-						},
-						_react2.default.createElement(
-							"iframe",
-							{ srcDoc: this.state.template_html, frameBorder: "0", width: "100%", height: "350px" },
-							this.state.template_html
-						)
-					)
-				);
-			}
-		}]);
-
-		return Template;
-	}(_react2.default.Component);
-
-	;
-
-	exports.default = Template;
-
-/***/ },
+/* 399 */,
 /* 400 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -13256,13 +13257,252 @@ webpackJsonp([2,8],Array(320).concat([
 	}
 
 /***/ },
-/* 453 */
+/* 453 */,
+/* 454 */,
+/* 455 */,
+/* 456 */,
+/* 457 */,
+/* 458 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _css = __webpack_require__(241);
+
+	var _modal = __webpack_require__(251);
+
+	var _modal2 = _interopRequireDefault(_modal);
+
+	var _css2 = __webpack_require__(280);
+
+	var _alert = __webpack_require__(283);
+
+	var _alert2 = _interopRequireDefault(_alert);
+
+	var _css3 = __webpack_require__(284);
+
+	var _input = __webpack_require__(287);
+
+	var _input2 = _interopRequireDefault(_input);
+
+	var _css4 = __webpack_require__(400);
+
+	var _table = __webpack_require__(415);
+
+	var _table2 = _interopRequireDefault(_table);
+
+	var _css5 = __webpack_require__(248);
+
+	var _button = __webpack_require__(272);
+
+	var _button2 = _interopRequireDefault(_button);
+
+	var _css6 = __webpack_require__(340);
+
+	var _notification = __webpack_require__(343);
+
+	var _notification2 = _interopRequireDefault(_notification);
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _fetch = __webpack_require__(303);
+
+	__webpack_require__(459);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Setting = function (_React$Component) {
+		_inherits(Setting, _React$Component);
+
+		function Setting(props) {
+			_classCallCheck(this, Setting);
+
+			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Setting).call(this, props));
+
+			window.scrollTo(0, 0);
+			_this2.state = {
+				label_list_data: [{}],
+				confirmLoading: false,
+				visible: false,
+				error_message: ""
+			};
+			return _this2;
+		}
+
+		//get label_list_data
+
+
+		_createClass(Setting, [{
+			key: "componentDidMount",
+			value: function componentDidMount() {
+				var _this = this;
+				(0, _fetch.fetch_data_get)("/api/get_label_list_data", { apiUser: localStorage.sc_client_api_user, apiKey: localStorage.sc_client_api_key }).then(function (result) {
+					var label_list_data = [];
+					result.body.label_list_data.map(function (ele, key) {
+						label_list_data.push({
+							key: key,
+							labelId: ele.labelId,
+							labelName: ele.labelName,
+							gmtCreated: ele.gmtCreated
+						});
+					});
+					_this.setState({
+						label_list_data: label_list_data
+					});
+				}).catch(function (error) {
+					console.log(error);
+				});
+			}
+		}, {
+			key: "add_label",
+			value: function add_label() {
+				this.setState({ visible: true, error_message: "" });
+			}
+		}, {
+			key: "handleSubmit",
+			value: function handleSubmit() {
+				var _this = this;
+				var label_name = this.refs.label_name.refs.input.value;
+				this.setState({ confirmLoading: true });
+				if (label_name == "" || typeof label_name == "undefined") {
+					_this.setState({ confirmLoading: false, error_message: "请填写标签名" });
+					return;
+				};
+				(0, _fetch.fetch_data_get)("/api/add_label", { apiUser: localStorage.sc_client_api_user, apiKey: localStorage.sc_client_api_key, labelName: label_name }).then(function (result) {
+					_this.setState({ confirmLoading: false, visible: false });
+					if (result.body.error) {
+						_notification2.default["error"]({
+							message: "错误",
+							description: result.body.message
+						});
+						return false;
+					};
+					_notification2.default["success"]({
+						message: "消息",
+						description: result.body.message
+					});
+					_this.setState({ label_list_data: result.body.label_list_data });
+				}).catch(function (error) {
+					console.log(error);
+				});
+			}
+		}, {
+			key: "handleCancel",
+			value: function handleCancel() {
+				this.setState({ visible: false });
+			}
+		}, {
+			key: "delete_label",
+			value: function delete_label(labelId) {
+				var _this3 = this;
+
+				(0, _fetch.fetch_data_get)("/api/delete_label", { apiUser: localStorage.sc_client_api_user, apiKey: localStorage.sc_client_api_key, labelId: parseInt(labelId) }).then(function (result) {
+					_notification2.default["success"]({
+						message: "消息",
+						description: result.body.message
+					});
+					_this3.setState({ label_list_data: result.body.label_list_data });
+				}).catch(function (error) {
+					console.log(error);
+				});
+			}
+		}, {
+			key: "render",
+			value: function render() {
+				var _this4 = this;
+
+				var columns = [{ title: "标签ID", dataIndex: "labelId", key: "labelId", render: function render(text) {
+						return _react2.default.createElement(
+							"a",
+							{ href: "#" },
+							text
+						);
+					} }, { title: "标签名称", dataIndex: "labelName", key: "labelName" }, { title: "创建时间", dataIndex: "gmtCreated", key: "gmtCreated" }, { title: "操作", key: "operation", render: function render(text, record) {
+						return _react2.default.createElement(
+							"span",
+							null,
+							_react2.default.createElement(
+								"a",
+								{ href: "#", onClick: function onClick() {
+										return _this4.delete_label(record.labelId);
+									} },
+								"删除"
+							)
+						);
+					}
+				}];
+				return _react2.default.createElement(
+					"div",
+					{ className: "SE_label_wrap" },
+					_react2.default.createElement(
+						"div",
+						{ className: "SE_label" },
+						_react2.default.createElement(
+							_button2.default,
+							{ type: "primary", onClick: function onClick() {
+									return _this4.add_label();
+								} },
+							"添加标签"
+						),
+						_react2.default.createElement(_table2.default, { columns: columns, dataSource: this.state.label_list_data }),
+						_react2.default.createElement(
+							_modal2.default,
+							{ title: "添加新标签",
+								visible: this.state.visible,
+								onOk: function onOk() {
+									return _this4.handleSubmit();
+								},
+								confirmLoading: this.state.confirmLoading,
+								onCancel: function onCancel() {
+									return _this4.handleCancel();
+								}
+							},
+							_react2.default.createElement(
+								"div",
+								{ className: "input_wrap" },
+								"标签名称: ",
+								_react2.default.createElement(_input2.default, { ref: "label_name", size: "large", placeholder: "" })
+							),
+							_react2.default.createElement(
+								"div",
+								{ className: "error_message", style: { "display": this.state.error_message == "" ? "none" : "block" } },
+								_react2.default.createElement(_alert2.default, { message: this.state.error_message, type: "error", showIcon: true })
+							)
+						)
+					)
+				);
+			}
+		}]);
+
+		return Setting;
+	}(_react2.default.Component);
+
+	;
+
+	exports.default = Setting;
+
+/***/ },
+/* 459 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(454);
+	var content = __webpack_require__(460);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(245)(content, {});
@@ -13271,8 +13511,8 @@ webpackJsonp([2,8],Array(320).concat([
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./template.scss", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./template.scss");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./label.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./label.scss");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -13282,7 +13522,7 @@ webpackJsonp([2,8],Array(320).concat([
 	}
 
 /***/ },
-/* 454 */
+/* 460 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(244)();
@@ -13290,7 +13530,7 @@ webpackJsonp([2,8],Array(320).concat([
 
 
 	// module
-	exports.push([module.id, ".SE_template_wrap {\n  padding-top: 40px; }\n  .SE_template_wrap .SE_template .ant-table td {\n    max-width: 80px; }\n\n.preview_box .ant-modal {\n  width: 680px !important; }\n", ""]);
+	exports.push([module.id, ".SE_label_wrap {\n  padding-top: 40px; }\n  .SE_label_wrap .SE_label .ant-btn {\n    margin-bottom: 20px; }\n  .SE_label_wrap .SE_label .ant-table td {\n    max-width: 80px; }\n", ""]);
 
 	// exports
 

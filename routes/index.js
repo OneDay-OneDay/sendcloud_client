@@ -139,13 +139,43 @@ router.get("/api/get_address_list_data", function(req, res, next){
 		.catch((error) => { console.log(error) });
 });
 
-// 获取邮件标签数据
-router.get("/api/get_label_list_data", function(req, res, next){
-	fetch_data_get("http://api.sendcloud.net/apiv2/label/list", req.query)
+// 获取地址列表详情数据
+router.get("/api/get_address_detail_data", function(req, res, next){
+	fetch_data_get("http://api.sendcloud.net/apiv2/addressmember/list", req.query)
 		.then((result) => {
 			console.log(result.body);
-			var label_list_data = result.body.info.dataList;
+			var address_detail_data = result.body.info.dataList;
+			res.json({ address_detail_data : address_detail_data });
+		})
+		.catch((error) => { console.log(error) });
+});
+
+// 获取邮件标签数据
+router.get("/api/get_label_list_data", function(req, res, next){
+	update_label( req.query.apiUser, req.query.apiKey )
+		.then((label_list_data) => {
 			res.json({ label_list_data : label_list_data });
+		})
+		.catch((error) => { console.log(error) });
+});
+
+// 邮件标签添加
+router.get("/api/add_label", function(req, res, next){
+	var apiUser = req.query.apiUser;
+	var apiKey = req.query.apiKey;
+	fetch_data_get("http://api.sendcloud.net/apiv2/label/add", req.query)
+		.then((result) => {
+			console.log(result.body);
+			if(!result.body.result){
+				res.json({ error: true, message: result.body.message });
+				return false;
+			};
+			// 更新标签数据
+			update_label(apiUser, apiKey)
+				.then((label_list_data) => {
+					res.json({ error: false, message: "标签添加成功！", label_list_data : label_list_data });
+				})
+				.catch((error) => { console.log(error) });
 		})
 		.catch((error) => { console.log(error) });
 });
@@ -157,16 +187,27 @@ router.get("/api/delete_label", function(req, res, next){
 	fetch_data_get("http://api.sendcloud.net/apiv2/label/delete", req.query)
 		.then((result) => {
 			console.log(result.body);
-			// 获取删除指定项后的标签数据
-			fetch_data_get("http://api.sendcloud.net/apiv2/label/list", {apiUser: apiUser, apiKey: apiKey})
-				.then((result) => {
-					console.log(result.body);
-					var label_list_data = result.body.info.dataList;
+			// 更新标签数据
+			update_label(apiUser, apiKey)
+				.then((label_list_data) => {
 					res.json({ message: "标签删除成功！", label_list_data : label_list_data });
 				})
 				.catch((error) => { console.log(error) });
 		})
 		.catch((error) => { console.log(error) });
 });
+
+// 获取更新后的邮件标签数据
+function update_label(apiUser, apiKey){
+	return new Promise((resolve, reject) => {
+		fetch_data_get("http://api.sendcloud.net/apiv2/label/list", { apiUser: apiUser, apiKey: apiKey })
+			.then((result) => {
+				console.log(result.body);
+				var label_list_data = result.body.info.dataList;
+				resolve(label_list_data);
+			})
+			.catch((error) => { console.log(error) });
+	})
+};
 
 module.exports = router;

@@ -80,7 +80,7 @@ class Template extends React.Component{
 		          	onOk = { () => this.preview_close() }
 		          	onCancel = { () => this.preview_close() }
 		        >
-		        	<iframe srcDoc={ this.state.template_html } frameBorder="0" width="100%" height="350px"></iframe>
+		        	<iframe srcDoc={ this.state.template_html } frameBorder="0" width="100%" height="350px">{ this.state.template_html }</iframe>
 		        </Modal>
 			</div>
 		);

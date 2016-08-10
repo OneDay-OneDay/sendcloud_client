@@ -31,34 +31,43 @@ webpackJsonp([0,8],[
 			_reactRouter.Route,
 			{ path: "/send_email", component: _app2.default },
 			_react2.default.createElement(_reactRouter.IndexRoute, { onEnter: _auth2.default.replace_away, getComponent: function getComponent(nextState, callback) {
-					__webpack_require__.e/* nsure */(1, function (require) {
+					__webpack_require__.e/* nsure */(9, function (require) {
 						callback(null, __webpack_require__(312).default);
 					});
 				} }),
 			_react2.default.createElement(_reactRouter.Redirect, { from: "/send_email/sending", to: "/send_email" }),
 			_react2.default.createElement(_reactRouter.Route, { path: "/send_email/template", onEnter: _auth2.default.replace_away, getComponent: function getComponent(nextState, callback) {
-					__webpack_require__.e/* nsure */(2, function (require) {
+					__webpack_require__.e/* nsure */(10, function (require) {
 						callback(null, __webpack_require__(399).default);
 					});
 				} }),
-			_react2.default.createElement(_reactRouter.Route, { path: "/send_email/address", onEnter: _auth2.default.replace_away, getComponent: function getComponent(nextState, callback) {
-					__webpack_require__.e/* nsure */(3, function (require) {
-						callback(null, __webpack_require__(455).default);
-					});
-				} }),
+			_react2.default.createElement(
+				_reactRouter.Route,
+				{ path: "/send_email/address", onEnter: _auth2.default.replace_away },
+				_react2.default.createElement(_reactRouter.IndexRoute, { getComponent: function getComponent(nextState, callback) {
+						__webpack_require__.e/* nsure */(11, function (require) {
+							callback(null, __webpack_require__(455).default);
+						});
+					} }),
+				_react2.default.createElement(_reactRouter.Route, { path: "/send_email/address_datail/:address", getComponent: function getComponent(nextState, callback) {
+						__webpack_require__.e/* nsure */(15, function (require) {
+							callback(null, __webpack_require__(465).default);
+						});
+					} })
+			),
 			_react2.default.createElement(_reactRouter.Route, { path: "/send_email/label", onEnter: _auth2.default.replace_away, getComponent: function getComponent(nextState, callback) {
-					__webpack_require__.e/* nsure */(4, function (require) {
+					__webpack_require__.e/* nsure */(12, function (require) {
 						callback(null, __webpack_require__(458).default);
 					});
 				} }),
 			_react2.default.createElement(_reactRouter.Route, { path: "/send_email/notlogin", onEnter: _auth2.default.already_login, getComponent: function getComponent(nextState, callback) {
-					__webpack_require__.e/* nsure */(5, function (require) {
+					__webpack_require__.e/* nsure */(13, function (require) {
 						callback(null, __webpack_require__(461).default);
 					});
 				} })
 		),
 		_react2.default.createElement(_reactRouter.Route, { path: "*", getComponent: function getComponent(nextState, callback) {
-				__webpack_require__.e/* nsure */(6, function (require) {
+				__webpack_require__.e/* nsure */(14, function (require) {
 					callback(null, __webpack_require__(464).default);
 				});
 			} })

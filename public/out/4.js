@@ -13271,13 +13271,37 @@ webpackJsonp([4,8],Array(320).concat([
 		value: true
 	});
 
-	var _css = __webpack_require__(400);
+	var _css = __webpack_require__(241);
+
+	var _modal = __webpack_require__(251);
+
+	var _modal2 = _interopRequireDefault(_modal);
+
+	var _css2 = __webpack_require__(280);
+
+	var _alert = __webpack_require__(283);
+
+	var _alert2 = _interopRequireDefault(_alert);
+
+	var _css3 = __webpack_require__(284);
+
+	var _input = __webpack_require__(287);
+
+	var _input2 = _interopRequireDefault(_input);
+
+	var _css4 = __webpack_require__(400);
 
 	var _table = __webpack_require__(415);
 
 	var _table2 = _interopRequireDefault(_table);
 
-	var _css2 = __webpack_require__(340);
+	var _css5 = __webpack_require__(248);
+
+	var _button = __webpack_require__(272);
+
+	var _button2 = _interopRequireDefault(_button);
+
+	var _css6 = __webpack_require__(340);
 
 	var _notification = __webpack_require__(343);
 
@@ -13310,7 +13334,12 @@ webpackJsonp([4,8],Array(320).concat([
 			var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Setting).call(this, props));
 
 			window.scrollTo(0, 0);
-			_this2.state = { label_list_data: [{}] };
+			_this2.state = {
+				label_list_data: [{}],
+				confirmLoading: false,
+				visible: false,
+				error_message: ""
+			};
 			return _this2;
 		}
 
@@ -13337,6 +13366,44 @@ webpackJsonp([4,8],Array(320).concat([
 				}).catch(function (error) {
 					console.log(error);
 				});
+			}
+		}, {
+			key: "add_label",
+			value: function add_label() {
+				this.setState({ visible: true, error_message: "" });
+			}
+		}, {
+			key: "handleSubmit",
+			value: function handleSubmit() {
+				var _this = this;
+				var label_name = this.refs.label_name.refs.input.value;
+				this.setState({ confirmLoading: true });
+				if (label_name == "" || typeof label_name == "undefined") {
+					_this.setState({ confirmLoading: false, error_message: "请填写标签名" });
+					return;
+				};
+				(0, _fetch.fetch_data_get)("/api/add_label", { apiUser: localStorage.sc_client_api_user, apiKey: localStorage.sc_client_api_key, labelName: label_name }).then(function (result) {
+					_this.setState({ confirmLoading: false, visible: false });
+					if (result.body.error) {
+						_notification2.default["error"]({
+							message: "错误",
+							description: result.body.message
+						});
+						return false;
+					};
+					_notification2.default["success"]({
+						message: "消息",
+						description: result.body.message
+					});
+					_this.setState({ label_list_data: result.body.label_list_data });
+				}).catch(function (error) {
+					console.log(error);
+				});
+			}
+		}, {
+			key: "handleCancel",
+			value: function handleCancel() {
+				this.setState({ visible: false });
 			}
 		}, {
 			key: "delete_label",
@@ -13384,7 +13451,38 @@ webpackJsonp([4,8],Array(320).concat([
 					_react2.default.createElement(
 						"div",
 						{ className: "SE_label" },
-						_react2.default.createElement(_table2.default, { columns: columns, dataSource: this.state.label_list_data })
+						_react2.default.createElement(
+							_button2.default,
+							{ type: "primary", onClick: function onClick() {
+									return _this4.add_label();
+								} },
+							"添加标签"
+						),
+						_react2.default.createElement(_table2.default, { columns: columns, dataSource: this.state.label_list_data }),
+						_react2.default.createElement(
+							_modal2.default,
+							{ title: "添加新标签",
+								visible: this.state.visible,
+								onOk: function onOk() {
+									return _this4.handleSubmit();
+								},
+								confirmLoading: this.state.confirmLoading,
+								onCancel: function onCancel() {
+									return _this4.handleCancel();
+								}
+							},
+							_react2.default.createElement(
+								"div",
+								{ className: "input_wrap" },
+								"标签名称: ",
+								_react2.default.createElement(_input2.default, { ref: "label_name", size: "large", placeholder: "" })
+							),
+							_react2.default.createElement(
+								"div",
+								{ className: "error_message", style: { "display": this.state.error_message == "" ? "none" : "block" } },
+								_react2.default.createElement(_alert2.default, { message: this.state.error_message, type: "error", showIcon: true })
+							)
+						)
 					)
 				);
 			}
@@ -13432,7 +13530,7 @@ webpackJsonp([4,8],Array(320).concat([
 
 
 	// module
-	exports.push([module.id, ".SE_label_wrap {\n  padding-top: 40px; }\n  .SE_label_wrap .SE_label .ant-table td {\n    max-width: 80px; }\n", ""]);
+	exports.push([module.id, ".SE_label_wrap {\n  padding-top: 40px; }\n  .SE_label_wrap .SE_label .ant-btn {\n    margin-bottom: 20px; }\n  .SE_label_wrap .SE_label .ant-table td {\n    max-width: 80px; }\n", ""]);
 
 	// exports
 

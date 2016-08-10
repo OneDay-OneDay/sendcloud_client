@@ -1,5 +1,6 @@
 import React from "react";
-import { Table } from "antd";
+import { Link } from "react-router";
+import { Table, Button } from "antd";
 import { fetch_data_get } from "../../../../fetch_function/fetch.js";
 
 import "../../../stylesheets/page_components/address.scss";
@@ -43,7 +44,7 @@ class Address extends React.Component{
 			{ title: "更新时间", dataIndex: "gmtUpdated", key: "gmtUpdated" },
 			{ title: "操作", key: "operation", render: (text, record) => (
 			  	<span>
-			      	<a href="#">编辑</a>
+			      	<Link to={ `/send_email/address_datail/${ record.address }` }>编辑</Link>
 			      	<span className="ant-divider"></span>
 			      	<a href="#">删除</a>
 			    </span>
