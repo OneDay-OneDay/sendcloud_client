@@ -13,10 +13,10 @@
 
 ###start
   
-1. `npm install`安装模块依赖  
+1. `npm install`
 
   
-2. `webpack -w --progress`生成转义后的静态文件
+2. `webpack -w --progress`
 
   
-3. `supervisor ./bin/www`开启Nodejs服务器。
+3. `supervisor ./bin/www`
