@@ -1,5 +1,6 @@
 #sendcloud client  
 >集成SendCloud常用API的邮件客户端应用  
+>已经成功部署上线
   
   
 ####目前实现的功能  
