@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, Button } from "antd";
+import { Table, Button, Spin } from "antd";
 import { fetch_data_get } from "../../../../fetch_function/fetch.js";
 
 import "../../../stylesheets/page_components/address_detail.scss";
@@ -9,6 +9,7 @@ class Address_detail extends React.Component{
 		super(props);
 		window.scrollTo(0,0);
 		this.state={
+			loading : false,
 			address_detail_data : [{  }]
 		};
 	}
@@ -16,6 +17,7 @@ class Address_detail extends React.Component{
 	//get address_datail_data
 	componentDidMount(){
 		var _this = this;
+		_this.setState({ loading : true });
 		fetch_data_get("/api/get_address_detail_data", { apiUser: localStorage.sc_client_api_user, apiKey: localStorage.sc_client_api_key, address : this.props.params.address })
 			.then((result) => {
 				let address_detail_data = [];
@@ -28,7 +30,8 @@ class Address_detail extends React.Component{
 	  					gmtCreated: ele.gmtCreated
 					});
 				});
-				_this.setState({ 
+				_this.setState({
+					loading : false,
 					address_detail_data : address_detail_data
 				});
 			})
@@ -51,7 +54,9 @@ class Address_detail extends React.Component{
 		return(
 			<div className="SE_address_detail_wrap">
 				<div className="SE_address_detail">
-					<Table columns={ columns } dataSource={ this.state.address_detail_data } />
+					<Spin size="large" spinning={ this.state.loading } >
+						<Table columns={ columns } dataSource={ this.state.address_detail_data } />
+					</Spin>
 				</div>
 			</div>
 		);

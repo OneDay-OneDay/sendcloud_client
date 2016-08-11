@@ -1,6 +1,6 @@
 import React from "react";
 import { fetch_data_get, fetch_data_post } from "../../../../fetch_function/fetch.js";
-import { Tabs, Select, Input, Tooltip, Button, notification, Radio } from "antd";
+import { Tabs, Select, Input, Tooltip, Button, notification, Radio, Spin } from "antd";
 import "../../../stylesheets/page_components/sending.scss";
 
 const TabPane = Tabs.TabPane;
@@ -12,6 +12,7 @@ class Sending extends React.Component{
 		super(props);
 		window.scrollTo(0,0);
 		this.state={
+			loading : false,
 			api_user_list : [{  }],
 			template_list : [{  }],
 			address_list : [{  }],
@@ -42,9 +43,11 @@ class Sending extends React.Component{
 	//get api_user list and template list
 	componentDidMount(){
 		var _this = this;
+		_this.setState({ loading : true });
 		fetch_data_get("/api/get_api_user_and_template", { apiUser: localStorage.sc_client_api_user, apiKey: localStorage.sc_client_api_key })
 			.then((result) => {
-				_this.setState({ 
+				_this.setState({
+					loading : false,
 					api_user_list: result.body.api_user_list, 
 					template_list: result.body.template_list,
 					address_list: result.body.address_list,
@@ -272,6 +275,7 @@ class Sending extends React.Component{
 		return(
 			<div className="SE_sending_wrap">
 				<div className="SE_sending">
+				<Spin size="large" spinning={ this.state.loading } >
 					<Tabs defaultActiveKey="1">
 						{/*普通发送*/}
 						<TabPane tab="普通发送" key="1">
@@ -426,6 +430,7 @@ class Sending extends React.Component{
 		        			<div className = "TabPane_item"><Button type="primary" loading={ this.state.template_send_loading } onClick={ () => this.handleSubmit(1) }>发送</Button></div>
 						</TabPane>
 					</Tabs>
+				</Spin>
 				</div>
 			</div>
 		);

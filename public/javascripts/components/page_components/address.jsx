@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router";
-import { Table, Button } from "antd";
+import { Table, Button, Spin } from "antd";
 import { fetch_data_get } from "../../../../fetch_function/fetch.js";
 
 import "../../../stylesheets/page_components/address.scss";
@@ -9,12 +9,16 @@ class Address extends React.Component{
 	constructor(props){
 		super(props);
 		window.scrollTo(0,0);
-		this.state={ address_list_data : [{  }] };
+		this.state={
+			loading : false,
+			address_list_data : [{  }] 
+		};
 	}
 	
 	//get address_list_data
 	componentDidMount(){
 		var _this = this;
+		_this.setState({ loading : true });
 		fetch_data_get("/api/get_address_list_data", { apiUser: localStorage.sc_client_api_user, apiKey: localStorage.sc_client_api_key })
 			.then((result) => {
 				let address_list_data = [];
@@ -28,7 +32,8 @@ class Address extends React.Component{
 	  					gmtUpdated: ele.gmtUpdated
 					});
 				});
-				_this.setState({ 
+				_this.setState({
+					loading : false,
 					address_list_data : address_list_data
 				});
 			})
@@ -54,7 +59,9 @@ class Address extends React.Component{
 		return(
 			<div className="SE_address_wrap">
 				<div className="SE_address">
-					<Table columns={ columns } dataSource={ this.state.address_list_data } />
+					<Spin size="large" spinning={ this.state.loading } >
+						<Table columns={ columns } dataSource={ this.state.address_list_data } />
+					</Spin>
 				</div>
 			</div>
 		);

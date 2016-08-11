@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, notification, Button, Modal, Alert, Input } from "antd";
+import { Table, notification, Button, Modal, Alert, Input, Spin } from "antd";
 import { fetch_data_get } from "../../../../fetch_function/fetch.js";
 
 import "../../../stylesheets/page_components/label.scss";
@@ -8,7 +8,8 @@ class Setting extends React.Component{
 	constructor(props){
 		super(props);
 		window.scrollTo(0,0);
-		this.state={ 
+		this.state={
+			loading : false,
 			label_list_data : [{  }],
 			confirmLoading : false,
       		visible : false,
@@ -19,6 +20,7 @@ class Setting extends React.Component{
 	//get label_list_data
 	componentDidMount(){
 		var _this = this;
+		_this.setState({ loading : true });
 		fetch_data_get("/api/get_label_list_data", { apiUser: localStorage.sc_client_api_user, apiKey: localStorage.sc_client_api_key })
 			.then((result) => {
 				let label_list_data = [];
@@ -30,7 +32,8 @@ class Setting extends React.Component{
 	  					gmtCreated: ele.gmtCreated
 					});
 				});
-				_this.setState({ 
+				_this.setState({
+					loading : false,
 					label_list_data : label_list_data
 				});
 			})
@@ -99,8 +102,10 @@ class Setting extends React.Component{
 		return(
 			<div className="SE_label_wrap">
 				<div className="SE_label">
-					<Button type="primary" onClick = { (  ) => this.add_label() }>添加标签</Button>
-					<Table columns={ columns } dataSource={ this.state.label_list_data } />
+					<Spin size="large" spinning={ this.state.loading } >
+						<Button type="primary" onClick = { (  ) => this.add_label() }>添加标签</Button>
+						<Table columns={ columns } dataSource={ this.state.label_list_data } />
+					</Spin>
 					<Modal title = "添加新标签"
 			          	visible = { this.state.visible }
 			          	onOk = { () => this.handleSubmit() }
